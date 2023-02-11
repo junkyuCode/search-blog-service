@@ -1,0 +1,28 @@
+---
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+logging.level:
+  root: INFO
+  org.springframework: INFO
+
+kakao:
+  api:
+    url: https://dapi.kakao.com
+    token: ${KAKAO_REST_API_KEY}
+naver:
+  api:
+    url: https://openapi.naver.com
+    client-id: ${NAVER_CLIENT_ID}
+    client-secret: ${NAVER_CLIENT_SECRET}
