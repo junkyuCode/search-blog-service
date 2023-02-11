@@ -64,7 +64,7 @@ $ docker-compose down
 
 ## 빌드 결과물 다운로드 경로
 
-[빌드 결과물]()
+[빌드 결과물](https://github.com/junkyuCode/search-blog-service/releases/tag/v0.0.1)
 
 ## **실행 가이드**
 당 서비스는 카카오/네이버 OpenAPI를 사용하므로 각 도메인의 인증 키가 필요합니다.
