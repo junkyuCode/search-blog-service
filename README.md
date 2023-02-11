@@ -46,14 +46,7 @@
 서비스를 정상적으로 이용하기 위해 Docker 설치가 필요합니다.
 * [Docker 설치](https://docs.docker.com/desktop/install/mac-install/)
 
-Docker 설치 이후 `.env` 파일 내 MYSQL_VOLUME 환경변수를 정의해 주셔야 합니다.
-
-예시
-``` bash
-MYSQL_VOLUME=~/Dev/docker/blog/mysql
-```
-
-위 작업 이후 다음 명령어를 실행하면, 로컬에 Redis 컨테이너가 동작합니다.
+설치 이후 다음 명령어를 실행하면, 로컬에 Redis 컨테이너가 동작합니다.
 ``` bash
 $ docker-compose up -d
 ```
@@ -120,4 +113,4 @@ http://localhost:28080/docs/index.html
 * 에러 핸들링
     * 익셉션 핸들러를 사용하여 정의한 에러코드를 응답할 수 있도록 처리하였습니다.
 * 테스트
-    * 웹 레이어 테스트를 진행하였습니다.
+    * 웹 레이어 및 서비스 레이어의 테스트를 진행하였습니다.
