@@ -45,14 +45,14 @@ public class GlobalExceptionHandler {
         .build();
   }
 
-  @ExceptionHandler(FeignException.class)
-  public ApiResponse<?> feignExceptionHandler(FeignException e) {
-    log.error("FeignException error", e);
+  @ExceptionHandler(BusinessException.class)
+  public ApiResponse<?> BusinessExceptionHandler(BusinessException e) {
+    log.error("BusinessException error", e);
 
     return ApiResponse.builder()
         .success(false)
-        .message("외부 API 호출 오류")
-        .data(null)
+        .message(e.getMessage())
+        .data(e.getErrorCode())
         .build();
   }
 }

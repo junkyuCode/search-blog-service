@@ -2,6 +2,8 @@ package com.junkyu.searchblogservice.service;
 
 import java.util.List;
 
+import com.junkyu.searchblogservice.common.error.BusinessException;
+import com.junkyu.searchblogservice.common.error.ErrorCode;
 import com.junkyu.searchblogservice.config.RedisConfig;
 import com.junkyu.searchblogservice.feign.kakao.blog.KakaoBlogClient;
 import com.junkyu.searchblogservice.feign.kakao.blog.request.KakaoBlogRequest;
@@ -52,7 +54,13 @@ public class FindBlogService implements FindBlogUseCase {
       totalCount = response.getMeta().totalCount();
     } catch (FeignException e) {
       log.error(String.format("네이버 검색으로 전환합니다. \n Cause : %s", e.getCause().getMessage()));
-      NaverBlogResponse response = naverBlogClient.getBlogData(NaverBlogRequest.from(request));
+
+      NaverBlogResponse response;
+      try {
+        response = naverBlogClient.getBlogData(NaverBlogRequest.from(request));
+      } catch (Exception ex) {
+        throw new BusinessException(ErrorCode.EXTERNAL_API_ERROR);
+      }
 
       findBlogResponses = response.getItems().stream()
           .map(FindBlogResponse::from)
