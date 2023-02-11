@@ -45,6 +45,7 @@ public class GlobalExceptionHandler {
         .build();
   }
 
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   @ExceptionHandler(BusinessException.class)
   public ApiResponse<?> BusinessExceptionHandler(BusinessException e) {
     log.error("BusinessException error", e);

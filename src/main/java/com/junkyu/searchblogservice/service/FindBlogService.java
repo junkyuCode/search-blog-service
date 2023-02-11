@@ -53,7 +53,7 @@ public class FindBlogService implements FindBlogUseCase {
 
       totalCount = response.getMeta().totalCount();
     } catch (FeignException e) {
-      log.error(String.format("네이버 검색으로 전환합니다. \n Cause : %s", e.getCause().getMessage()));
+      log.error(String.format("네이버 검색으로 전환합니다. \n Cause : %s", e.getMessage()));
 
       NaverBlogResponse response;
       try {
